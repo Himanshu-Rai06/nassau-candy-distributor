@@ -8,7 +8,9 @@ Author: Himanshu Rai | Data Science Internship Project
 import streamlit as st
 import numpy as np
 import pandas as pd
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+from matplotlib.patches import Wedge
 
 # ─────────────────────────────────────────────────────────────
 # PAGE CONFIG
@@ -178,34 +180,61 @@ footer { visibility: hidden; }
 """, unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────
-# COLOUR CONSTANTS + PLOTLY BASE LAYOUT
+# COLOUR CONSTANTS + MATPLOTLIB WHITE-CARD CHART THEME
+# Charts render as clean white matplotlib figures (rather than the
+# dark Plotly theme) for maximum on-page readability and print clarity.
 # ─────────────────────────────────────────────────────────────
-PLOT_BG, PLOT_PAPER = "#181c26", "#181c26"
-GRID_CLR, TEXT_CLR  = "#2A2D3A", "#9096B4"
 GOLD, TEAL, CORAL, LAVENDER = "#7F77DD", "#3ecfb2", "#f0634a", "#9f86ff"
 SKY = "#60c5e8"
 
-CHART_CONFIG = {
-    "displayModeBar": True,
-    "scrollZoom": True,
-    "displaylogo": False,
-    "modeBarButtonsToRemove": ["lasso2d", "select2d"],
-}
+# Slightly deepened variants of the brand palette — these keep enough
+# contrast to read clearly on a white chart background.
+MC_PURPLE   = "#6A5ACD"
+MC_TEAL     = "#0EA383"
+MC_CORAL    = "#E0503A"
+MC_LAVENDER = "#8266EA"
+MC_SKY      = "#1D8FBF"
+MC_MUTED    = "#B9BDCB"
+MC_TEXT     = "#20222E"
+MC_SUBTEXT  = "#6B7086"
+MC_GRID     = "#E7E8EF"
 
-def base_layout(title="", height=380):
-    return dict(
-        height=height,
-        title=dict(text=title, font=dict(family="Playfair Display", size=15, color="#E8E8F0"),
-                   x=0.01, xanchor="left") if title else None,
-        paper_bgcolor=PLOT_PAPER,
-        plot_bgcolor=PLOT_BG,
-        font=dict(family="DM Sans", color=TEXT_CLR, size=12),
-        xaxis=dict(gridcolor=GRID_CLR, zerolinecolor=GRID_CLR, tickfont=dict(size=11), autorange=True),
-        yaxis=dict(gridcolor=GRID_CLR, zerolinecolor=GRID_CLR, tickfont=dict(size=11), autorange=True),
-        legend=dict(bgcolor="rgba(0,0,0,0)", bordercolor=GRID_CLR, font=dict(size=11)),
-        margin=dict(l=50, r=20, t=50 if title else 30, b=50),
-        dragmode="pan",
-    )
+plt.rcParams.update({
+    "font.family":      "DejaVu Sans",
+    "figure.facecolor": "white",
+    "axes.facecolor":   "white",
+    "axes.edgecolor":   MC_GRID,
+    "axes.labelcolor":  MC_SUBTEXT,
+    "axes.titlecolor":  MC_TEXT,
+    "text.color":       MC_TEXT,
+    "xtick.color":      MC_SUBTEXT,
+    "ytick.color":      MC_SUBTEXT,
+    "grid.color":       MC_GRID,
+    "font.size":        10.5,
+})
+
+
+def style_axes(ax, grid_axis="x"):
+    """Apply the shared clean-white chart look to a matplotlib Axes."""
+    for spine in ("top", "right", "left"):
+        ax.spines[spine].set_visible(False)
+    ax.spines["bottom"].set_color(MC_GRID)
+    ax.tick_params(length=0)
+    ax.set_axisbelow(True)
+    if grid_axis:
+        ax.grid(axis=grid_axis, color=MC_GRID, linewidth=0.9)
+
+
+def chart_title(ax, text):
+    ax.set_title(text, fontsize=13, fontweight="bold", color=MC_TEXT, loc="left", pad=12)
+
+
+def render_chart(fig):
+    """Render a matplotlib figure as a white card and close it to free memory."""
+    fig.patch.set_facecolor("white")
+    fig.tight_layout()
+    st.pyplot(fig, width='stretch')
+    plt.close(fig)
 
 def icon(name, color="currentColor", size=18, stroke=1.8):
     paths = {
@@ -476,29 +505,25 @@ with tab_overview:
         }
         region_positions = {"Atlantic": (0.12, 0.40), "Gulf": (0.35, 0.15), "Interior": (0.62, 0.20), "Pacific": (0.88, 0.35)}
 
-        fig = go.Figure()
+        fig, ax = plt.subplots(figsize=(6, 4.6))
         for name, (x, y) in factory_positions.items():
             f = FACTORIES[name]
-            size = 10 + (f["orders"] / 5692) * 35
-            fig.add_trace(go.Scatter(
-                x=[x], y=[y], mode="markers+text",
-                marker=dict(size=size, color=f["color"], opacity=0.85, line=dict(width=2, color="rgba(255,255,255,0.15)")),
-                text=[name], textposition="top center", textfont=dict(size=9, color="#E8E8F0"),
-                name=name, hovertemplate=f"<b>{name}</b><br>{f['orders']:,} orders<extra></extra>",
-            ))
+            size = (10 + (f["orders"] / 5692) * 35) ** 1.7
+            ax.scatter(x, y, s=size, color=f["color"], alpha=0.88,
+                       edgecolors="white", linewidths=1.5, zorder=3)
+            ax.annotate(f"{name}\n{f['orders']:,} orders", (x, y),
+                        textcoords="offset points", xytext=(0, 14),
+                        ha="center", fontsize=8.3, color=MC_TEXT, fontweight="bold", zorder=4)
         for rname, (rx, ry) in region_positions.items():
-            fig.add_trace(go.Scatter(
-                x=[rx], y=[ry], mode="markers+text",
-                marker=dict(size=12, color="rgba(255,255,255,0.1)", line=dict(width=1, color="rgba(255,255,255,0.3)")),
-                text=[rname], textposition="bottom center", textfont=dict(size=9, color="#5B6180"),
-                name=rname, hovertemplate=f"<b>{rname}</b> Region<extra></extra>",
-            ))
-        layout = base_layout(height=340)
-        layout["showlegend"] = False
-        layout["xaxis"].update(visible=False, range=[0, 1])
-        layout["yaxis"].update(visible=False, range=[0, 1])
-        fig.update_layout(**layout)
-        st.plotly_chart(fig, use_container_width=True, config=CHART_CONFIG)
+            ax.scatter(rx, ry, s=90, color="white", edgecolors=MC_MUTED, linewidths=1.3, zorder=2)
+            ax.annotate(f"{rname} Region", (rx, ry),
+                        textcoords="offset points", xytext=(0, -14),
+                        ha="center", fontsize=8, color=MC_SUBTEXT, zorder=2)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.axis("off")
+        chart_title(ax, "Factory & Region Network")
+        render_chart(fig)
 
         total_orders = sum(f["orders"] for f in FACTORIES.values())
         top2 = FACTORIES["Lot's O' Nuts"]["orders"] + FACTORIES["Wicked Choccy's"]["orders"]
@@ -580,18 +605,20 @@ with tab_overview:
         group_labels = list(groups.keys())
         group_values = [float(np.mean(v)) for v in groups.values()]
 
-        fig = go.Figure(go.Bar(
-            x=group_values, y=group_labels, orientation="h",
-            marker=dict(color=GOLD, line=dict(width=0)),
-            text=[f"{v:.2f}%" for v in group_values], textposition="outside",
-            textfont=dict(size=10, color="#9096B4"),
-            hovertemplate="<b>%{y}</b><br>Lead Time Reduction: %{x:.2f}%<extra></extra>",
-        ))
-        layout = base_layout(height=340)
-        layout["xaxis"]["title"] = "Lead Time Reduction (%)"
-        layout["margin"]["l"] = 170
-        fig.update_layout(**layout)
-        st.plotly_chart(fig, use_container_width=True, config=CHART_CONFIG)
+        fig, ax = plt.subplots(figsize=(6.4, 4.6))
+        y_pos = np.arange(len(group_labels))
+        bars = ax.barh(y_pos, group_values, color=MC_PURPLE, height=0.6, zorder=3)
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(group_labels, fontsize=9.5)
+        ax.invert_yaxis()
+        for bar, v in zip(bars, group_values):
+            ax.text(bar.get_width() + 0.05, bar.get_y() + bar.get_height() / 2,
+                    f"{v:.2f}%", va="center", fontsize=9.5, color=MC_TEXT, fontweight="bold")
+        ax.set_xlim(0, max(group_values) * 1.2)
+        ax.set_xlabel("Lead Time Reduction (%)")
+        style_axes(ax, grid_axis="x")
+        chart_title(ax, "Lead Time Reduction by Product Group")
+        render_chart(fig)
         st.caption(f"Grouped for readability — {KPIS['active_count']} individual products are broken out in full on the Recommendations tab.")
 
     with c2:
@@ -603,23 +630,28 @@ with tab_overview:
         </div>
         """, unsafe_allow_html=True)
 
-        fig = go.Figure(go.Pie(
-            labels=["Improved", "Neutral", "Worse"],
-            values=[SCENARIO_OUTCOMES["improve"], SCENARIO_OUTCOMES["neutral"], SCENARIO_OUTCOMES["worse"]],
-            hole=0.62,
-            marker=dict(colors=[TEAL, GOLD, CORAL], line=dict(color=PLOT_BG, width=2)),
-            textinfo="label+percent", textfont=dict(size=11, color="#E8E8F0"),
-            hovertemplate="<b>%{label}</b><br>%{value} scenarios · %{percent}<extra></extra>",
-        ))
-        fig.add_annotation(text=f"<b style='font-size:16px'>{KPIS['confidence_pct']:.0f}%</b><br>Confidence",
-                            x=0.5, y=0.5, showarrow=False, font=dict(size=11, color=GOLD))
-        layout = base_layout(height=340)
-        layout.pop("xaxis"); layout.pop("yaxis")
-        layout["showlegend"] = True
-        layout["legend"] = dict(bgcolor="rgba(0,0,0,0)", orientation="h", y=-0.12, font=dict(size=10, color=TEXT_CLR))
-        layout["margin"] = dict(l=40, r=40, t=30, b=40)
-        fig.update_layout(**layout)
-        st.plotly_chart(fig, use_container_width=True, config=CHART_CONFIG)
+        fig, ax = plt.subplots(figsize=(6.5, 5.2))
+        values = [SCENARIO_OUTCOMES["improve"], SCENARIO_OUTCOMES["neutral"], SCENARIO_OUTCOMES["worse"]]
+        labels = ["Improved", "Neutral", "Worse"]
+        colors = [MC_TEAL, MC_PURPLE, MC_CORAL]
+        total = sum(values)
+        wedges, _ = ax.pie(
+            values, colors=colors, startangle=90, counterclock=False,
+            wedgeprops=dict(width=0.38, edgecolor="white", linewidth=3), radius=0.9,
+        )
+        for w, lab, val in zip(wedges, labels, values):
+            ang = (w.theta1 + w.theta2) / 2
+            x, y = np.cos(np.radians(ang)) * 0.68, np.sin(np.radians(ang)) * 0.68
+            ax.annotate(f"{lab}\n{val} ({val/total*100:.0f}%)", (x, y), ha="center", va="center",
+                        fontsize=8.6, fontweight="bold", color="white", clip_on=False)
+        ax.text(0, 0.05, f"{KPIS['confidence_pct']:.0f}%", ha="center", va="center",
+                fontsize=19, fontweight="bold", color=MC_PURPLE)
+        ax.text(0, -0.12, "Confidence", ha="center", va="center", fontsize=9, color=MC_SUBTEXT)
+        ax.set_xlim(-1.3, 1.3)
+        ax.set_ylim(-1.1, 1.1)
+        ax.set_aspect("equal", adjustable="datalim")
+        chart_title(ax, "Scenario Outcome Breakdown (of 60 simulated)")
+        render_chart(fig)
 
     st.markdown(f"""
     <div class="insight-box" style='margin-top:0.5rem'>
@@ -659,29 +691,33 @@ with tab_sim:
     current_days = adjusted[current_product["factory"]]
     reduction_pct = (current_days - fastest_days) / current_days * 100 if current_days > 0 else 0
 
-    colors = []
+    colors_mc = []
     for f, _ in sorted_factories:
         if f == current_product["factory"] and f == fastest_factory:
-            colors.append(LAVENDER)
+            colors_mc.append(MC_LAVENDER)
         elif f == current_product["factory"]:
-            colors.append(CORAL)
+            colors_mc.append(MC_CORAL)
         elif f == fastest_factory:
-            colors.append(TEAL)
+            colors_mc.append(MC_TEAL)
         else:
-            colors.append("#3a3f52")
+            colors_mc.append(MC_MUTED)
 
-    fig = go.Figure(go.Bar(
-        x=[v for _, v in sorted_factories], y=[f for f, _ in sorted_factories], orientation="h",
-        marker=dict(color=colors),
-        text=[f"{v:.2f}d" for _, v in sorted_factories], textposition="outside",
-        textfont=dict(size=11, color="#9096B4"),
-        hovertemplate="<b>%{y}</b><br>Predicted lead time: %{x:.2f} days<extra></extra>",
-    ))
-    layout = base_layout(title=f"Predicted Lead Time — {current_product['name']}", height=360)
-    layout["xaxis"]["title"] = "Lead Time (days)"
-    layout["margin"]["l"] = 150
-    fig.update_layout(**layout)
-    st.plotly_chart(fig, use_container_width=True, config=CHART_CONFIG)
+    fig, ax = plt.subplots(figsize=(11, 4.6))
+    labels = [f for f, _ in sorted_factories]
+    values = [v for _, v in sorted_factories]
+    y_pos = np.arange(len(labels))
+    bars = ax.barh(y_pos, values, color=colors_mc, height=0.55, zorder=3)
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(labels, fontsize=10.5)
+    ax.invert_yaxis()
+    for bar, v in zip(bars, values):
+        ax.text(bar.get_width() + max(values) * 0.012, bar.get_y() + bar.get_height() / 2,
+                f"{v:.2f}d", va="center", fontsize=10, color=MC_TEXT, fontweight="bold")
+    ax.set_xlim(0, max(values) * 1.15)
+    ax.set_xlabel("Lead Time (days)")
+    style_axes(ax, grid_axis="x")
+    chart_title(ax, f"Predicted Lead Time — {current_product['name']}")
+    render_chart(fig)
 
     m1, m2, m3, m4 = st.columns(4)
     m1.metric("Current Factory", current_product["factory"])
@@ -750,18 +786,18 @@ with tab_whatif:
         </div>
         """, unsafe_allow_html=True)
 
-    fig = go.Figure(go.Bar(
-        x=[current_product["factory"], RECOMMENDED_FACTORY],
-        y=[base_current, base_other],
-        marker=dict(color=[CORAL, TEAL]),
-        text=[f"{base_current:.2f}d", f"{base_other:.2f}d"], textposition="outside",
-        textfont=dict(size=12, color="#E8E8F0"),
-        hovertemplate="<b>%{x}</b><br>%{y:.2f} days<extra></extra>",
-    ))
-    layout = base_layout(title="Lead Time Comparison", height=320)
-    layout["yaxis"]["title"] = "Lead Time (days)"
-    fig.update_layout(**layout)
-    st.plotly_chart(fig, use_container_width=True, config=CHART_CONFIG)
+    fig, ax = plt.subplots(figsize=(11, 4))
+    cats = [current_product["factory"], RECOMMENDED_FACTORY]
+    vals = [base_current, base_other]
+    bars = ax.bar(cats, vals, color=[MC_CORAL, MC_TEAL], width=0.5, zorder=3)
+    for bar, v in zip(bars, vals):
+        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + max(vals) * 0.02,
+                f"{v:.2f}d", ha="center", fontsize=11, color=MC_TEXT, fontweight="bold")
+    ax.set_ylim(0, max(vals) * 1.2)
+    ax.set_ylabel("Lead Time (days)")
+    style_axes(ax, grid_axis="y")
+    chart_title(ax, "Lead Time Comparison")
+    render_chart(fig)
 
     if already_optimal:
         st.markdown(f"""
@@ -810,7 +846,7 @@ with tab_rec:
 
     st.dataframe(
         pd.concat([df_active, df_optimal]),
-        use_container_width=True, hide_index=True,
+        width="stretch", hide_index=True,
         column_config={
             "Lead Time Reduction (%)": st.column_config.ProgressColumn(
                 "Lead Time Reduction (%)", min_value=0, max_value=5, format="%.2f%%"),
@@ -820,16 +856,21 @@ with tab_rec:
     )
 
     top5 = df_active.head(5)
-    fig = go.Figure(go.Bar(
-        x=top5["Priority Score"], y=top5["Product"], orientation="h",
-        marker=dict(color=GOLD),
-        text=[f"{v:.2f}" for v in top5["Priority Score"]], textposition="outside",
-        textfont=dict(size=10, color="#9096B4"),
-    ))
-    layout = base_layout(title="Top 5 Recommendations at Current Priority Setting", height=320)
-    layout["margin"]["l"] = 200
-    fig.update_layout(**layout)
-    st.plotly_chart(fig, use_container_width=True, config=CHART_CONFIG)
+    fig, ax = plt.subplots(figsize=(11, 4.2))
+    labels = list(top5["Product"])[::-1]
+    values = list(top5["Priority Score"])[::-1]
+    y_pos = np.arange(len(labels))
+    bars = ax.barh(y_pos, values, color=MC_PURPLE, height=0.55, zorder=3)
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(labels, fontsize=9.5)
+    for bar, v in zip(bars, values):
+        ax.text(bar.get_width() + max(values) * 0.02, bar.get_y() + bar.get_height() / 2,
+                f"{v:.2f}", va="center", fontsize=9.5, color=MC_TEXT, fontweight="bold")
+    ax.set_xlim(0, max(values) * 1.18 if max(values) > 0 else 1)
+    ax.set_xlabel("Priority Score")
+    style_axes(ax, grid_axis="x")
+    chart_title(ax, "Top 5 Recommendations at Current Priority Setting")
+    render_chart(fig)
 
 # =================================================================
 # TAB 5 — RISK & IMPACT PANEL
@@ -849,23 +890,33 @@ with tab_risk:
     r2.metric("Worst Profit Impact", f"{min(p['profit'] for p in PRODUCTS)*100:.1f} pp")
     r3.metric("Stability Bound", f"±{STABILITY_BOUND*100:.0f} pp")
 
-    fig = go.Figure()
+    fig, ax = plt.subplots(figsize=(11, 5.2))
+    legend_done = set()
     for p in PRODUCTS:
-        color = CORAL if p["profit"] <= RISK_THRESHOLD else (LAVENDER if p["reduction"] == 0 else TEAL)
-        fig.add_trace(go.Scatter(
-            x=[p["reduction"]], y=[p["profit"] * 100], mode="markers",
-            marker=dict(size=14, color=color, opacity=0.85, line=dict(width=1, color="rgba(255,255,255,0.2)")),
-            name=p["name"], showlegend=False,
-            hovertemplate=f"<b>{p['name']}</b><br>Reduction: %{{x:.2f}}%<br>Profit Impact: %{{y:.1f}}pp<extra></extra>",
-        ))
-    fig.add_hline(y=STABILITY_BOUND * 100, line_dash="dash", line_color="#5B6180", annotation_text="+stability bound")
-    fig.add_hline(y=-STABILITY_BOUND * 100, line_dash="dash", line_color="#5B6180", annotation_text="-stability bound")
-    fig.add_hline(y=RISK_THRESHOLD * 100, line_dash="dot", line_color=CORAL, annotation_text="risk threshold")
-    layout = base_layout(title="Profit Impact vs. Lead Time Reduction (per product)", height=420)
-    layout["xaxis"]["title"] = "Lead Time Reduction (%)"
-    layout["yaxis"]["title"] = "Profit Impact (pp)"
-    fig.update_layout(**layout)
-    st.plotly_chart(fig, use_container_width=True, config=CHART_CONFIG)
+        if p["profit"] <= RISK_THRESHOLD:
+            color, cat = MC_CORAL, "Flagged (below risk threshold)"
+        elif p["reduction"] == 0:
+            color, cat = MC_LAVENDER, "Already optimal"
+        else:
+            color, cat = MC_TEAL, "Recommended"
+        label = cat if cat not in legend_done else None
+        legend_done.add(cat)
+        ax.scatter(p["reduction"], p["profit"] * 100, s=140, color=color, alpha=0.9,
+                   edgecolors="white", linewidths=1.2, zorder=3, label=label)
+        ax.annotate(p["name"], (p["reduction"], p["profit"] * 100),
+                    textcoords="offset points", xytext=(6, 5), fontsize=7.3, color=MC_SUBTEXT)
+    ax.axhline(STABILITY_BOUND * 100, color=MC_MUTED, linestyle="--", linewidth=1.2)
+    ax.axhline(-STABILITY_BOUND * 100, color=MC_MUTED, linestyle="--", linewidth=1.2)
+    ax.axhline(RISK_THRESHOLD * 100, color=MC_CORAL, linestyle=":", linewidth=1.3)
+    ax.text(0, STABILITY_BOUND * 100, " +stability bound", fontsize=8, color=MC_SUBTEXT, va="bottom")
+    ax.text(0, -STABILITY_BOUND * 100, " -stability bound", fontsize=8, color=MC_SUBTEXT, va="top")
+    ax.text(0, RISK_THRESHOLD * 100, " risk threshold", fontsize=8, color=MC_CORAL, va="bottom")
+    ax.set_xlabel("Lead Time Reduction (%)")
+    ax.set_ylabel("Profit Impact (pp)")
+    style_axes(ax, grid_axis="both")
+    ax.legend(loc="lower left", frameon=False, fontsize=9)
+    chart_title(ax, "Profit Impact vs. Lead Time Reduction (per product)")
+    render_chart(fig)
 
     if flagged:
         for p in flagged:
