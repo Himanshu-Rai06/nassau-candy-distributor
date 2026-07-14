@@ -432,7 +432,7 @@ with tab_overview:
     with col1:
         st.markdown("""
         <div class="section-header">
-            <span class="section-number">§ Abstract</span>
+            <span class="section-number">» Abstract</span>
             <div class="section-line"></div>
         </div>
         """, unsafe_allow_html=True)
@@ -462,7 +462,7 @@ with tab_overview:
     with col2:
         st.markdown("""
         <div class="section-header">
-            <span class="section-number">§ Network Map</span>
+            <span class="section-number">» Network Map</span>
             <div class="section-line"></div>
         </div>
         """, unsafe_allow_html=True)
@@ -517,7 +517,7 @@ with tab_overview:
 
     st.markdown("""
     <div class="section-header" style='margin-top:1rem'>
-        <span class="section-number">§ KPIs</span>
+        <span class="section-number">» KPIs</span>
         <span class="section-title">Key Performance Indicators</span>
         <div class="section-line"></div>
     </div>
@@ -565,7 +565,7 @@ with tab_overview:
     with c1:
         st.markdown("""
         <div class="section-header" style='margin-top:0.5rem'>
-            <span class="section-number">§ 1</span>
+            <span class="section-number">» 1</span>
             <span style='font-family:"Playfair Display",serif; font-size:1.1rem; color:#E8E8F0'>Lead Time Reduction by Product Group</span>
             <div class="section-line"></div>
         </div>
@@ -597,7 +597,7 @@ with tab_overview:
     with c2:
         st.markdown("""
         <div class="section-header" style='margin-top:0.5rem'>
-            <span class="section-number">§ 2</span>
+            <span class="section-number">» 2</span>
             <span style='font-family:"Playfair Display",serif; font-size:1.1rem; color:#E8E8F0'>Scenario Outcome Breakdown (of 60 simulated)</span>
             <div class="section-line"></div>
         </div>
@@ -639,7 +639,7 @@ with tab_overview:
 with tab_sim:
     st.markdown(f"""
     <div class="section-header">
-        <span class="section-number">§ Simulator</span>
+        <span class="section-number">» Simulator</span>
         <span class="section-title">Factory Optimization Simulator</span>
         <div class="section-line"></div>
     </div>
@@ -714,7 +714,7 @@ with tab_sim:
 with tab_whatif:
     st.markdown("""
     <div class="section-header">
-        <span class="section-number">§ What-If</span>
+        <span class="section-number">» What-If</span>
         <span class="section-title">Current vs. Recommended Assignment</span>
         <div class="section-line"></div>
     </div>
@@ -784,7 +784,7 @@ with tab_whatif:
 with tab_rec:
     st.markdown("""
     <div class="section-header">
-        <span class="section-number">§ Recommendations</span>
+        <span class="section-number">» Recommendations</span>
         <span class="section-title">Ranked Reassignment Suggestions</span>
         <div class="section-line"></div>
     </div>
@@ -837,7 +837,7 @@ with tab_rec:
 with tab_risk:
     st.markdown("""
     <div class="section-header">
-        <span class="section-number">§ Risk</span>
+        <span class="section-number">» Risk</span>
         <span class="section-title">Risk & Impact Panel</span>
         <div class="section-line"></div>
     </div>
