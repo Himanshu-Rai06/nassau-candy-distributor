@@ -1,0 +1,16 @@
+Product Name,Factory,Division,Avg_Lead_Time,Lead_Time_Std,Avg_Profit_Margin,Avg_Sales,Order_Count,Cluster,Product Label
+Everlasting Gobstopper,Secret Factory,Sugar,1394.6666666666667,213.33619789743446,80.0,43.333333333333336,3,0,Slow & Risky
+Fizzy Lifting Drinks,Sugar Shack,Sugar,1273.5,326.6917507376028,60.0,13.125,6,1,Average Performer
+Fun Dip,Sugar Shack,Sugar,1272.6666666666667,2.081665999466101,40.0,4.0,3,2,Fast & Profitable
+Hair Toffee,The Other Factory,Sugar,1455.25,209.87674954601337,77.77777777777779,19.125,4,0,Slow & Risky
+Kazookles,The Other Factory,Other,1272.9895833333333,259.94321221097795,7.6923076923076925,12.559895833333334,96,2,Fast & Profitable
+Laffy Taffy,Sugar Shack,Sugar,1383.1,246.56369472320043,62.31155778894472,5.372999999999999,10,1,Average Performer
+Lickable Wallpaper,Secret Factory,Other,1339.1382978723404,288.4598554303892,50.0,83.61702127659575,94,0,Slow & Risky
+Nerds,Sugar Shack,Sugar,1274.0,422.0434416818566,46.666666666666664,3.75,4,1,Average Performer
+SweeTARTS,Sugar Shack,Sugar,1383.5,246.68885035381894,46.666666666666664,6.15,10,1,Average Performer
+Wonka Bar - Fudge Mallows,Lot's O' Nuts,Chocolate,1314.2420242024202,264.10282548038134,66.66666666666666,13.691089108910893,1818,1,Average Performer
+Wonka Bar - Milk Chocolate,Wicked Choccy's,Chocolate,1316.7646233036967,263.6927038121913,64.92307692307693,12.572648572765559,2137,1,Average Performer
+Wonka Bar - Nutty Crunch Surprise,Lot's O' Nuts,Chocolate,1328.9154696132596,260.83739798024163,71.34670487106017,13.024834254143647,1810,1,Average Performer
+Wonka Bar - Triple Dazzle Caramel,Wicked Choccy's,Chocolate,1325.6610421836228,260.5243390305675,65.33333333333333,14.136476426799007,2015,1,Average Performer
+Wonka Bar -Scrumdiddlyumptious,Lot's O' Nuts,Chocolate,1320.6419573643411,260.1212648399884,69.44444444444444,13.505232558139534,2064,1,Average Performer
+Wonka Gum,Secret Factory,Other,1306.525,292.03159615230095,52.0,4.979166666666667,120,1,Average Performer

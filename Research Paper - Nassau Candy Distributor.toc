@@ -1,0 +1,46 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {section}{\numberline {2}Related Work}{5}{section.2}%
+\contentsline {section}{\numberline {3}Data and Methodology}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Dataset Description}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Feature Engineering}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Data Cleaning}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Encoding and Normalisation}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Shipping Distance Calculation}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Modelling and Validation Strategy}{9}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Exploratory Data Analysis}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Dataset Overview and Descriptive Statistics}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Lead Time Analysis}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Factory-Level Lead Time Patterns}{11}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Regional and Shipping Mode Analysis}{12}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Financial Performance by Factory}{13}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Factory--Region Lead Time Heatmap}{14}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Correlation Analysis}{15}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Key Insights}{16}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Insight 1 --- The Network is Temporally Dominated}{16}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Insight 2 --- Factory Capacity is Critically Imbalanced}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Insight 3 --- The Other Factory is the Operational Benchmark}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Insight 4 --- Lot's O' Nuts and Wicked Choccy's are Congested}{17}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Insight 5 --- Secret Factory is Mid-Range; Sugar Shack is Inconsistent}{17}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Insight 6 --- The Other Factory's Low Margin is a Financial Risk, Not an Operational One}{17}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Insight 7 --- Hair Toffee Cannot Be Reassigned}{17}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Insight 8 --- Everlasting Gobstopper is the Highest-Priority Reassignment Candidate}{18}{subsection.5.8}%
+\contentsline {section}{\numberline {6}Predictive Modelling}{18}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Objective and Feature Matrix}{18}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Models Trained}{18}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Model Performance}{19}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Feature Importance}{20}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Route and Product Clustering}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Route Clustering --- Motivation}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Feature Selection and Scaling}{21}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Optimal K Selection}{22}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Cluster Profiles and Labels}{22}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Product Clustering}{24}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Factory Reassignment Recommendations}{25}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Simulation Framework}{25}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Final Recommendations}{26}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Risk and Margin Safety Panel}{27}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Business Impact Quantification}{28}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Key Performance Indicators}{30}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Conclusion}{31}{section.9}%
+\contentsline {section}{Appendix A --- Hair Toffee Analysis Note}{34}{Item.25}%
+\contentsline {section}{Appendix B --- Computational Environment}{34}{Item.25}%

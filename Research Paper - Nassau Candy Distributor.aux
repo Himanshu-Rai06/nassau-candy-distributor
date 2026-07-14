@@ -1,0 +1,142 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{4}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{4}{Introduction}{section.1}{}}
+\citation{dantzig1959}
+\citation{chopra2007}
+\citation{farahani2011}
+\citation{macqueen1967}
+\citation{rousseeuw1987}
+\citation{breiman2001}
+\citation{friedman2001}
+\citation{breiman2001}
+\citation{sinnott1984}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{5}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{5}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Data and Methodology}{6}{section.3}\protected@file@percent }
+\newlabel{sec:data}{{3}{6}{Data and Methodology}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset Description}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Dataset Schema --- Original 18 Columns}}{6}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:schema}{{1}{6}{Dataset Schema --- Original 18 Columns}{table.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Feature Engineering}{7}{subsection.3.2}\protected@file@percent }
+\citation{sinnott1984}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Product-to-Factory Mapping}}{8}{table.caption.2}\protected@file@percent }
+\newlabel{tab:factory_map}{{2}{8}{Product-to-Factory Mapping}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Data Cleaning}{8}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Encoding and Normalisation}{8}{subsection.3.4}\protected@file@percent }
+\citation{rousseeuw1987}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Shipping Distance Calculation}{9}{subsection.3.5}\protected@file@percent }
+\newlabel{subsec:distance}{{3.5}{9}{Shipping Distance Calculation}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Modelling and Validation Strategy}{9}{subsection.3.6}\protected@file@percent }
+\newlabel{eq:score}{{1}{9}{Modelling and Validation Strategy}{equation.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Exploratory Data Analysis}{9}{section.4}\protected@file@percent }
+\newlabel{sec:eda}{{4}{9}{Exploratory Data Analysis}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Dataset Overview and Descriptive Statistics}{9}{subsection.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Descriptive Statistics --- Numeric Columns (n = 10,194)}}{10}{table.caption.3}\protected@file@percent }
+\newlabel{tab:desc}{{3}{10}{Descriptive Statistics --- Numeric Columns (n = 10,194)}{table.caption.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Order Volume by Factory}}{10}{table.caption.4}\protected@file@percent }
+\newlabel{tab:factory_counts}{{4}{10}{Order Volume by Factory}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Lead Time Analysis}{10}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Left: Lead time distribution showing a trimodal pattern corresponding to three order cohorts (early 2024, mid-2024, late 2025). Right: Lead time by factory --- four factories cluster in the upper range ($>$1,270 days); Secret Factory spans the full range (904--1,642 days).}}{11}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:lead_dist}{{1}{11}{Left: Lead time distribution showing a trimodal pattern corresponding to three order cohorts (early 2024, mid-2024, late 2025). Right: Lead time by factory --- four factories cluster in the upper range ($>$1,270 days); Secret Factory spans the full range (904--1,642 days)}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Factory-Level Lead Time Patterns}{11}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Regional and Shipping Mode Analysis}{12}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Lead time distributions across all four regions (Atlantic, Gulf, Interior, Pacific) and all four ship modes (Standard Class, First Class, Second Class, Same Day) show nearly identical medians and interquartile ranges, confirming that lead time variation is systemic and temporal rather than route-specific.}}{12}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:region_shipmode}{{2}{12}{Lead time distributions across all four regions (Atlantic, Gulf, Interior, Pacific) and all four ship modes (Standard Class, First Class, Second Class, Same Day) show nearly identical medians and interquartile ranges, confirming that lead time variation is systemic and temporal rather than route-specific}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Financial Performance by Factory}{13}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Left: Secret Factory achieves the highest average revenue per order (\textasciitilde \$40) despite handling only 217 orders. Right: Lot's O' Nuts and Wicked Choccy's lead on profit margin (\textasciitilde 65--67\%); The Other Factory records a critically low weighted margin of \textasciitilde 10\%, driven by Kazookles (7.7\% margin, 96 orders).}}{13}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:factory_financial}{{3}{13}{Left: Secret Factory achieves the highest average revenue per order (\textasciitilde \$40) despite handling only 217 orders. Right: Lot's O' Nuts and Wicked Choccy's lead on profit margin (\textasciitilde 65--67\%); The Other Factory records a critically low weighted margin of \textasciitilde 10\%, driven by Kazookles (7.7\% margin, 96 orders)}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Factory--Region Lead Time Heatmap}{14}{subsection.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Cross-tabulated average lead times (days) for each factory-region combination. Sugar Shack--Pacific (1,517 days) is the worst-performing route; Sugar Shack--Gulf (1,091 days) is the most efficient.}}{14}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:heatmap_lt}{{4}{14}{Cross-tabulated average lead times (days) for each factory-region combination. Sugar Shack--Pacific (1,517 days) is the worst-performing route; Sugar Shack--Gulf (1,091 days) is the most efficient}{figure.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Average Lead Time (Days) by Factory and Region}}{14}{table.caption.9}\protected@file@percent }
+\newlabel{tab:lt_heatmap}{{5}{14}{Average Lead Time (Days) by Factory and Region}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Correlation Analysis}{15}{subsection.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Pearson correlation matrix. Order Year holds the strongest relationship with Lead Time ($r = 0.72$). Financial metrics (Sales, Gross Profit, Cost, Units) are highly inter-correlated ($r = 0.73$--$0.98$) as expected from their mathematical definitions.}}{15}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:corr}{{5}{15}{Pearson correlation matrix. Order Year holds the strongest relationship with Lead Time ($r = 0.72$). Financial metrics (Sales, Gross Profit, Cost, Units) are highly inter-correlated ($r = 0.73$--$0.98$) as expected from their mathematical definitions}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Key Insights}{16}{section.5}\protected@file@percent }
+\newlabel{sec:insights}{{5}{16}{Key Insights}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Insight 1 --- The Network is Temporally Dominated}{16}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Insight 2 --- Factory Capacity is Critically Imbalanced}{16}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Insight 3 --- The Other Factory is the Operational Benchmark}{16}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Insight 4 --- Lot's O' Nuts and Wicked Choccy's are Congested}{17}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Insight 5 --- Secret Factory is Mid-Range; Sugar Shack is Inconsistent}{17}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Insight 6 --- The Other Factory's Low Margin is a Financial Risk, Not an Operational One}{17}{subsection.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Insight 7 --- Hair Toffee Cannot Be Reassigned}{17}{subsection.5.7}\protected@file@percent }
+\citation{breiman2001}
+\citation{friedman2001}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Insight 8 --- Everlasting Gobstopper is the Highest-Priority Reassignment Candidate}{18}{subsection.5.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Predictive Modelling}{18}{section.6}\protected@file@percent }
+\newlabel{sec:model}{{6}{18}{Predictive Modelling}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Objective and Feature Matrix}{18}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Models Trained}{18}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Model Performance}{19}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Predictive Model Comparison (Test Set, n = 2,039)}}{19}{table.caption.11}\protected@file@percent }
+\newlabel{tab:model_comparison}{{6}{19}{Predictive Model Comparison (Test Set, n = 2,039)}{table.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Visual comparison of RMSE, MAE, and $R^2$ across the three regression models. Linear Regression achieves the best RMSE and $R^2$; all three models produce similar MAE, reflecting the dominant role of Order Year across all modelling approaches.}}{20}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:model_comparison}{{6}{20}{Visual comparison of RMSE, MAE, and $R^2$ across the three regression models. Linear Regression achieves the best RMSE and $R^2$; all three models produce similar MAE, reflecting the dominant role of Order Year across all modelling approaches}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Feature Importance}{20}{subsection.6.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Feature Importance: Linear Regression Coefficients and Gradient Boosting Importances (Sorted by Absolute LR Coefficient)}}{20}{table.caption.13}\protected@file@percent }
+\newlabel{tab:lr_coef}{{7}{20}{Feature Importance: Linear Regression Coefficients and Gradient Boosting Importances (Sorted by Absolute LR Coefficient)}{table.caption.13}{}}
+\citation{rousseeuw1987}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Route and Product Clustering}{21}{section.7}\protected@file@percent }
+\newlabel{sec:clustering}{{7}{21}{Route and Product Clustering}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Route Clustering --- Motivation}{21}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Feature Selection and Scaling}{21}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Optimal K Selection}{22}{subsection.7.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Silhouette Scores for Route Clustering by Number of Clusters}}{22}{table.caption.14}\protected@file@percent }
+\newlabel{tab:silhouette}{{8}{22}{Silhouette Scores for Route Clustering by Number of Clusters}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Cluster Profiles and Labels}{22}{subsection.7.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Route Cluster Profiles (K = 5)}}{22}{table.caption.15}\protected@file@percent }
+\newlabel{tab:cluster_profiles}{{9}{22}{Route Cluster Profiles (K = 5)}{table.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Route classification heatmap. Lot's O' Nuts and Wicked Choccy's are Congested across all regions; The Other Factory is Efficient across all regions; Secret Factory is Moderate across all regions; Sugar Shack is highly inconsistent --- Optimised in Gulf, Bottleneck in Atlantic, Interior, and Pacific.}}{23}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:route_heatmap}{{7}{23}{Route classification heatmap. Lot's O' Nuts and Wicked Choccy's are Congested across all regions; The Other Factory is Efficient across all regions; Secret Factory is Moderate across all regions; Sugar Shack is highly inconsistent --- Optimised in Gulf, Bottleneck in Atlantic, Interior, and Pacific}{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Route cluster bubble chart. Sugar Shack--Pacific sits in the upper portion (highest lead time despite moderate distance). Sugar Shack--Gulf is an anomalous low outlier (fast despite 1,321 miles). Congested routes (Lot's O' Nuts and Wicked Choccy's, large bubbles) cluster around 1,310--1,330 days regardless of distance, confirming that their elevated lead times are volume-driven rather than geography-driven.}}{23}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:route_bubble}{{8}{23}{Route cluster bubble chart. Sugar Shack--Pacific sits in the upper portion (highest lead time despite moderate distance). Sugar Shack--Gulf is an anomalous low outlier (fast despite 1,321 miles). Congested routes (Lot's O' Nuts and Wicked Choccy's, large bubbles) cluster around 1,310--1,330 days regardless of distance, confirming that their elevated lead times are volume-driven rather than geography-driven}{figure.caption.17}{}}
+\citation{macqueen1967}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Product Clustering}{24}{subsection.7.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Silhouette Scores for Product Clustering}}{24}{table.caption.18}\protected@file@percent }
+\newlabel{tab:prod_silhouette}{{10}{24}{Silhouette Scores for Product Clustering}{table.caption.18}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Factory Reassignment Recommendations}{25}{section.8}\protected@file@percent }
+\newlabel{sec:recommendations}{{8}{25}{Factory Reassignment Recommendations}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Simulation Framework}{25}{subsection.8.1}\protected@file@percent }
+\newlabel{eq:pred_lt}{{2}{25}{Simulation Framework}{equation.2}{}}
+\newlabel{eq:reduction}{{3}{25}{Simulation Framework}{equation.3}{}}
+\newlabel{eq:pct}{{4}{25}{Simulation Framework}{equation.4}{}}
+\newlabel{eq:days_saved}{{5}{25}{Simulation Framework}{equation.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Final Recommendations}{26}{subsection.8.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Final Factory Reassignment Recommendations (All 13 Products, Sorted by Priority Score)}}{26}{table.caption.19}\protected@file@percent }
+\newlabel{tab:final_recommendations}{{11}{26}{Final Factory Reassignment Recommendations (All 13 Products, Sorted by Priority Score)}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Risk and Margin Safety Panel}{27}{subsection.8.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Risk and Margin Safety Assessment (Post-Reassignment)}}{27}{table.caption.20}\protected@file@percent }
+\newlabel{tab:risk}{{12}{27}{Risk and Margin Safety Assessment (Post-Reassignment)}{table.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Business Impact Quantification}{28}{subsection.8.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Current vs.\ predicted lead times for all 13 recommended products after reassignment to The Other Factory. Every product records a positive lead time reduction; Sugar Shack products benefit most (58 days saved).}}{29}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:lt_comparison}{{9}{29}{Current vs.\ predicted lead times for all 13 recommended products after reassignment to The Other Factory. Every product records a positive lead time reduction; Sugar Shack products benefit most (58 days saved)}{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Left: Composite priority scores by product --- Everlasting Gobstopper ranks \#1 due to its uniquely high profit margin. Right: Total operational days saved --- the five Chocolate Wonka Bars dominate due to order volume of 1,810--2,137 per product.}}{29}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:priority_charts}{{10}{29}{Left: Composite priority scores by product --- Everlasting Gobstopper ranks \#1 due to its uniquely high profit margin. Right: Total operational days saved --- the five Chocolate Wonka Bars dominate due to order volume of 1,810--2,137 per product}{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Speed gain (lead time reduction \%) versus financial safety (predicted profit margin \%). Bubble size represents order volume. Products in the upper-right quadrant --- principally the Chocolate Wonka Bars --- combine high margin with meaningful speed gains and represent the most balanced reassignment candidates.}}{30}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:tradeoff}{{11}{30}{Speed gain (lead time reduction \%) versus financial safety (predicted profit margin \%). Bubble size represents order volume. Products in the upper-right quadrant --- principally the Chocolate Wonka Bars --- combine high margin with meaningful speed gains and represent the most balanced reassignment candidates}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Key Performance Indicators}{30}{subsection.8.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Key Performance Indicators --- Factory Reassignment Programme}}{30}{table.caption.24}\protected@file@percent }
+\newlabel{tab:kpis}{{13}{30}{Key Performance Indicators --- Factory Reassignment Programme}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{31}{section.9}\protected@file@percent }
+\newlabel{sec:conclusion}{{9}{31}{Conclusion}{section.9}{}}
+\bibstyle{apalike}
+\bibcite{breiman2001}{{1}{2001}{{Breiman}}{{}}}
+\bibcite{chopra2007}{{2}{2007}{{Chopra and Meindl}}{{}}}
+\bibcite{dantzig1959}{{3}{1959}{{Dantzig and Ramser}}{{}}}
+\bibcite{farahani2011}{{4}{2011}{{Farahani et al.}}{{}}}
+\bibcite{friedman2001}{{5}{2001}{{Friedman}}{{}}}
+\bibcite{macqueen1967}{{6}{1967}{{MacQueen}}{{}}}
+\bibcite{rousseeuw1987}{{7}{1987}{{Rousseeuw}}{{}}}
+\bibcite{sinnott1984}{{8}{1984}{{Sinnott}}{{}}}
+\@writefile{toc}{\contentsline {section}{Appendix A --- Hair Toffee Analysis Note}{34}{Item.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Appendix B --- Computational Environment}{34}{Item.25}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Python Package Versions}}{35}{table.caption.25}\protected@file@percent }
+\newlabel{tab:packages}{{14}{35}{Python Package Versions}{table.caption.25}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Key Libraries Used}}{35}{lstlisting.1}\protected@file@percent }
+\gdef \@abspage@last{36}

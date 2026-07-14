@@ -1,0 +1,14 @@
+Product,Division,Current Factory,Recommended Factory,Current Lead Time,Predicted Lead Time,Lead Time Reduction,Reduction (%),Current Margin (%),Predicted Margin (%),Order Count,Score,Priority Rank,Total Days Saved
+Everlasting Gobstopper,Sugar,Secret Factory,The Other Factory,1394.7,1342.3,52.3,3.75,80.0,80.0,3,26.25140383715489,1,156.89999999999998
+Fizzy Lifting Drinks,Sugar,Sugar Shack,The Other Factory,1273.5,1215.3,58.2,4.57,60.0,60.02,6,20.75080767430978,2,349.20000000000005
+Fun Dip,Sugar,Sugar Shack,The Other Factory,1272.7,1214.5,58.2,4.57,40.0,40.02,3,14.74940383715489,3,174.60000000000002
+Laffy Taffy,Sugar,Sugar Shack,The Other Factory,1383.1,1324.9,58.2,4.21,62.31,62.34,10,21.232679457182968,4,582.0
+Lickable Wallpaper,Other,Secret Factory,The Other Factory,1339.1,1286.8,52.3,3.91,50.0,50.0,94,17.389986897519886,5,4916.2
+Nerds,Sugar,Sugar Shack,The Other Factory,1274.0,1215.8,58.2,4.57,46.67,46.69,4,16.750871782873187,6,232.8
+SweeTARTS,Sugar,Sugar Shack,The Other Factory,1383.5,1325.3,58.2,4.21,46.67,46.69,10,16.537679457182968,7,582.0
+Wonka Bar - Fudge Mallows,Chocolate,Lot's O' Nuts,The Other Factory,1314.2,1260.9,53.3,4.06,66.67,66.7,1818,23.296725315863362,8,96899.4
+Wonka Bar - Milk Chocolate,Chocolate,Wicked Choccy's,The Other Factory,1316.8,1264.4,52.4,3.98,64.92,64.95,2137,22.872999999999998,9,111978.8
+Wonka Bar - Nutty Crunch Surprise,Chocolate,Lot's O' Nuts,The Other Factory,1328.9,1275.6,53.3,4.01,71.35,71.38,1810,24.66698175011698,10,96473.0
+Wonka Bar - Triple Dazzle Caramel,Chocolate,Wicked Choccy's,The Other Factory,1325.7,1273.3,52.4,3.95,65.33,65.36,2015,22.920910622367806,11,105586.0
+Wonka Bar -Scrumdiddlyumptious,Chocolate,Lot's O' Nuts,The Other Factory,1320.6,1267.3,53.3,4.04,69.44,69.47,2064,24.23083996256434,12,110011.2
+Wonka Gum,Other,Secret Factory,The Other Factory,1306.5,1254.2,52.3,4.01,52.0,52.0,120,18.0621534861956,13,6276.0
